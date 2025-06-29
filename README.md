@@ -75,6 +75,82 @@ Develope comprehensive collection of SQL scripts for data exploration, analytics
 
 #### 2.2 Data Analysis
 
+We have already created views in the gold layer : **dim_customers,dim_products,dim_fact_sales**. These three will be used to perform the following tasks:
+1. **Exploratory Data Analysis**
+2. **Advanced Data Analysis**
+3. Creating **Report Views** for **dashborading**.
+
+Any column can be categories as a **Measure** or **Dimesnion**. 
+- Is it numeric ? YES. Does it make sense to aggregate it ? YES
+- Hence you have found a measure,evrything else is a Dimension.
+
+**Explortary Data Analysis** <br>
+
+The data contains order over 37 months between dates : 2010-12-29 to 2014-01-28.
+There are **18,484 customers** fo our business. <br>
+Male and female customers are almost 9300 and 9100 respectively, somewhat equal contribution. <br>
+The customers belong to six different countries,while there are few customers whose country of origin is unknown. <br>
+
+| Country | Count | Country | Count |
+|---------|-------|---------|-------|
+| USA | 7482 | Germany | 1780 |
+| Australia | 3591 | Canada | 1571 |
+| UK | 1913 | n/a | 337 |
+| France | 1810 |  |  |
+
+The Top-5 customers who have generated the highest revenue:
+
+| Customer Name | Total Expenditure |
+|---------------|-------------------|
+| Katlyn Henderson | 13294 |
+| Nichole Nara | 13294 |
+| Margaret He | 13268 |
+| Randall Dominguez | 13265 |
+| Maurice Shan | 13242 |
+
+The youngest and oldest customer of our business are aged 39 and 109 years respectively. <br>
+
+| Number of Orders | Number of Customers |
+|-----------------|-----------------|
+| 1 | 11619 |
+| 2 | 1254 |
+| 3 | 1166 |
+| 4 | 150 |
+| 5 | 51 |
+|>5 |44 |
+
+There are ~ 11.6K customers who have placed an order only once. The number of two and three time customers is similar but drops rapidly for orders greater than three.
+
+There are mainly four categories for the business: **Accessories,Bikes,Clothing** and **Components**. <br> There are 295 different types of products that are being sold across category. <br>
+Category wise distribution is as follows:
+
+| Category | Total Nr Products | Average Cost |Total Sales (Volume)| Total Revenue($) |
+|----------|-------------------| -------------|--------------------|---------------|
+| Components | 127 | 264 | - | - |
+| Bikes | 97 | 343 | 15205 | ~ 28.3 M |
+| Clothing | 35 | 24 |9101| ~340K |
+| Accessories | 29 | 13 |36092| ~ 700K |
+
+
+- Components have the maximum number of products but during this period,not a single product from this category has been sold.
+- Bikes are the costliest items on average, and they have produced the majority of the revenue (close to **96%** ).
+- Clothing and Accessories have a small spectrum of cheaper products to offer.
+- Accessories are the most sold out item,neaarly double than bikes. But since they are on avg cheaper,they don't contribute anything major to the revenue.
+
+| Best Performing Products | Revenue | Worst Performing Products | Revenue |
+|-------------------------|---------|---------------------------|---------|
+| Mountain-200 Black- 46 | 1373454 | Racing Socks- M | 2430 |
+| Mountain-200 Black- 42 | 1361312 | Sport-100 Helmet- M | 282 |
+| Mountain-200 Silver- 38 | 1339394 | Patch Kit/8 Patches | 6382 |
+| Mountain-200 Silver- 46 | 1301029 | Bike Wash - Dissolver | 7272 |
+| Mountain-200 Black- 38 | 1284954 | Touring Tire Tube | 7440 |
+
+The abover table contains the best and wprst performing products respectively. <br>
+Top 5 products are all bikes,different specs of *Mountain-200* .
+
+
+
+
 
 #### 2.3 Sales Performance Dashboard
 
