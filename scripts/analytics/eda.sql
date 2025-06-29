@@ -228,3 +228,17 @@ ON s.customer_key = c.customer_key
 GROUP BY c.customer_key)t
 GROUP BY total_nr_orders
 
+-- Performance of Products
+SELECT TOP 5
+product_name,
+ROUND((CAST(total_selling_revenue AS FLOAT) - CAST(total_cost_revenue AS FLOAT))*100.0/total_cost_revenue, 2) AS total_profit_margin
+FROM (
+	SELECT
+	p.product_name,
+	SUM(p.cost) AS total_cost_revenue,
+	SUM(s.sales_amount) AS total_selling_revenue
+	FROM gold.fact_sales s
+	LEFT JOIN gold.dim_products p
+	ON s.product_key = p.product_key
+	GROUP BY p.product_name)t
+ORDER BY total_profit_margin DESC

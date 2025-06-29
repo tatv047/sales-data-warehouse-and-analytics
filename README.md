@@ -86,7 +86,7 @@ Any column can be categories as a **Measure** or **Dimesnion**.
 
 **Explortary Data Analysis** <br>
 
-The data contains order over 37 months between dates : 2010-12-29 to 2014-01-28.
+The data contains orders over 37 months between dates : 2010-12-29 to 2014-01-28.
 There are **18,484 customers** fo our business. <br>
 Male and female customers are almost 9300 and 9100 respectively, somewhat equal contribution. <br>
 The customers belong to six different countries,while there are few customers whose country of origin is unknown. <br>
@@ -137,16 +137,17 @@ Category wise distribution is as follows:
 - Clothing and Accessories have a small spectrum of cheaper products to offer.
 - Accessories are the most sold out item,neaarly double than bikes. But since they are on avg cheaper,they don't contribute anything major to the revenue.
 
-| Best Performing Products | Revenue | Worst Performing Products | Revenue |
-|-------------------------|---------|---------------------------|---------|
-| Mountain-200 Black- 46 | 1373454 | Racing Socks- M | 2430 |
-| Mountain-200 Black- 42 | 1361312 | Sport-100 Helmet- M | 282 |
-| Mountain-200 Silver- 38 | 1339394 | Patch Kit/8 Patches | 6382 |
-| Mountain-200 Silver- 46 | 1301029 | Bike Wash - Dissolver | 7272 |
-| Mountain-200 Black- 38 | 1284954 | Touring Tire Tube | 7440 |
+| Best Performing Products | Profit Margin(%) | Worst Performing Products | Profit Margin(%) |
+|-------------------------|---------------|---------------------------|---------------|
+| Road Tire Tube | 300 | Short-Sleeve Classic Jersey- M | 28.57 |
+| Racing Socks- L | 200 | AWC Logo Cap | 28.57 |
+| Road Bottle Cage | 200 | Short-Sleeve Classic Jersey- XL | 28.57 |
+| Racing Socks- M | 200 | Short-Sleeve Classic Jersey- S | 28.57 |
+| LL Mountain Tire | 178.42 | Short-Sleeve Classic Jersey- L | 28.57 |
 
-The abover table contains the best and wprst performing products respectively. <br>
-Top 5 products are all bikes,different specs of *Mountain-200* .
+The abover table contains the best and worst performing products respectively based on Profit Margin of the products across all the sales.
+
+**Advanced Data Analysis** <br>
 
 
 
