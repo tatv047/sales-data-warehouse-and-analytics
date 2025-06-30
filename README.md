@@ -193,7 +193,6 @@ There are two other SQL scripts: [Customer Report](./scripts/analytics/customer_
 The views created earlier were used to create an interactive [dashboard](Sales%20Performance%20Dashboard.pbix) using *PowerBI*. <br>
 It gives a summary of sales for presenting at the executive levels. If desired,you can create a more detailed dashboard for products and customers separately.
 
-
 ![PowerBI Dashboard](docs/Dashboard.png)
 
 ```
