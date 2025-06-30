@@ -75,18 +75,15 @@ Develope comprehensive collection of SQL scripts for data exploration, analytics
 
 #### 2.2 Data Analysis
 
-We have already created views in the gold layer : **dim_customers,dim_products,dim_fact_sales**. These three will be used to perform the following tasks:
-1. **Exploratory Data Analysis**
-2. **Advanced Data Analysis**
-3. Creating **Report Views** for **dashborading**.
+We have already created views in the gold layer : **dim_customers,dim_products,dim_fact_sales**. These three will be used to perform **Exploratory Data Analysis**,**Advanced Data Analysis** and creating **Report Views** for **dashboarding**.
 
 Any column can be categories as a **Measure** or **Dimesnion**. 
 - Is it numeric ? YES. Does it make sense to aggregate it ? YES
 - Hence you have found a measure,evrything else is a Dimension.
 
-**Explortary Data Analysis** <br>
+**Data Analysis Report** <br>
 
-The data contains orders over 37 months between dates : 2010-12-29 to 2014-01-28.
+The data contains orders over 37 months between dates : **2010-12-29 **to **2014-01-28**.
 There are **18,484 customers** fo our business. <br>
 Male and female customers are almost 9300 and 9100 respectively, somewhat equal contribution. <br>
 The customers belong to six different countries,while there are few customers whose country of origin is unknown. <br>
@@ -98,6 +95,7 @@ The customers belong to six different countries,while there are few customers wh
 | UK | 1913 | n/a | 337 |
 | France | 1810 |  |  |
 
+The youngest and oldest customer of our business are aged 39 and 109 years respectively. <br>
 The Top-5 customers who have generated the highest revenue:
 
 | Customer Name | Total Expenditure |
@@ -107,8 +105,6 @@ The Top-5 customers who have generated the highest revenue:
 | Margaret He | 13268 |
 | Randall Dominguez | 13265 |
 | Maurice Shan | 13242 |
-
-The youngest and oldest customer of our business are aged 39 and 109 years respectively. <br>
 
 | Number of Orders | Number of Customers |
 |-----------------|-----------------|
@@ -120,6 +116,21 @@ The youngest and oldest customer of our business are aged 39 and 109 years respe
 |>5 |44 |
 
 There are ~ 11.6K customers who have placed an order only once. The number of two and three time customers is similar but drops rapidly for orders greater than three.
+
+| customer_segments | total_customers |
+|-------------------|-----------------|
+| VIP               | 1655            |
+| Regular           | 2198            |
+| New               | 14631           |
+
+On grouping customers into three segments based on their spending behavior:
+   - VIP: Customers with at least 12 months of history and spending more than €5,000.
+   - Regular: Customers with at least 12 months of history but spending €5,000 or less.
+   - New: Customers with a lifespan less than 12 months.
+we can see that :
+- the vast majority (14,631) are new customers - indicating strong customer acquisition.
+- A good regular cusomer base suggesting strong retention.
+- A good VIP base (1,655) suggesting successful upselling and customer value growth.
 
 There are mainly four categories for the business: **Accessories,Bikes,Clothing** and **Components**. <br> There are 295 different types of products that are being sold across category. <br>
 Category wise distribution is as follows:
@@ -137,6 +148,18 @@ Category wise distribution is as follows:
 - Clothing and Accessories have a small spectrum of cheaper products to offer.
 - Accessories are the most sold out item,neaarly double than bikes. But since they are on avg cheaper,they don't contribute anything major to the revenue.
 
+| Cost Range | Total Products |
+|------------|----------------|
+| Above 1000 | 39 |
+| 500-1000 | 45 |
+| 100-500 | 101 |
+| Below 100 | 110 |
+
+- Most products (110) are in the budget category (below $100)
+- A good middle segment (101) in the $100-500 range
+- Fewer premium products (39 above $1000)
+- The distribution suggests a pyramid structure with more affordable options than high-end products
+
 | Best Performing Products | Profit Margin(%) | Worst Performing Products | Profit Margin(%) |
 |-------------------------|---------------|---------------------------|---------------|
 | Road Tire Tube | 300 | Short-Sleeve Classic Jersey- M | 28.57 |
@@ -147,43 +170,31 @@ Category wise distribution is as follows:
 
 The abover table contains the best and worst performing products respectively based on Profit Margin of the products across all the sales.
 
-**Advanced Data Analysis** <br>
+So on analysing the sales over the years, we can see that 2013 has been the best year. <br>
+Also,keep in mind that first  and last orders came on 2010-12-29 and 2014-01-28 respectively,so no point in comparing them.
 
+| Order Year | Total Sales | Total Customers | Total Quantity | Running Total Sales |
+|------------|-------------|-----------------|----------------|---------------------|
+| 2010 | 43419 | 14 | 14 | 43419 |
+| 2011 | 7075088 | 2216 | 2216 | 7118507|
+| 2012 | 5842231 | 3255 | 3397 | 12960738 |
+| 2013 | 16344878 | 17427 | 52807 | 29305616 |
+| 2014 | 45642 | 834 | 1970 | 29351258 |
 
+- The total customers has increased over the years and so has the sales by volume. <br>
+- Interesentigly, our business sold more items to more customers in 2012 compared to 2011 and still generated less revenue. <br>
+- A possible reason could be selling of less costly goods. <br>
 
-
+SQL queries for answering all the above questions are present in the form of two scripts: [EDA](./scripts/analytics/eda.sql) and [Advanced Analytics](./scripts/analytics/advanced_analytics.sql) <br>
+There are two other SQL scripts: [Customer Report](./scripts/analytics/customer_report.sql) and [Product Report](./scripts/analytics/product_report.sql) that let you create two views named '**report_customers**' and '**report_products**' that summarises a lot of the related data and can be used for dashboarding.
 
 #### 2.3 Sales Performance Dashboard
 
+The views created earlier were used to create an interactive [dashboard](Sales%20Performance%20Dashboard.pbix) using *PowerBI*. <br>
+It gives a summary of sales for presenting at the executive levels. If desired,you can create a more detailed dashboard for products and customers separately.
+
+
 ![PowerBI Dashboard](docs/Dashboard.png)
 
----
----
-## Repository Structure
-
-```
-data-warehouse-project/
-│
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
-│
-├── docs/                               # Documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
-│
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
-│
-├── tests/                              # Test scripts and quality files
-│
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
 ```
 
