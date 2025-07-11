@@ -195,5 +195,4 @@ It gives a summary of sales for presenting at the executive levels. If desired,y
 
 ![PowerBI Dashboard](docs/Dashboard.png)
 
-```
 
